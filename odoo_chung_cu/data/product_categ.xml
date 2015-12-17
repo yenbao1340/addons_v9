@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="product.category" id="room_product">
+            <field name="name">Tiền phòng</field>
+            <field name="parent_id">1</field>
+            <field name="type">normal</field>
+        </record>
+
+        <record model="product.category" id="base_product">
+            <field name="name">Dịch vụ gốc</field>
+            <field name="parent_id">1</field>
+            <field name="type">normal</field>
+        </record>
+
+        <record model="product.category" id="other_product">
+            <field name="name">Dịch vụ gia tăng</field>
+            <field name="parent_id">1</field>
+            <field name="type">normal</field>
+        </record>
+
+        <record model="product.category" id="power_water_product">
+            <field name="name">Cước điện nước</field>
+            <field name="parent_id">1</field>
+            <field name="type">normal</field>
+        </record>
+    </data>
+</openerp>
