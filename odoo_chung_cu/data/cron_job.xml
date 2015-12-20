@@ -1,0 +1,19 @@
+import xmlrpclib
+
+url_common = "http://sandbox.api.ftg.vn:8000/xmlrpc/common"
+url_object = "http://sandbox.api.ftg.vn:8000/xmlrpc/object"
+user_name = "vgpublicapi"
+password = 'da87dd6126'
+db_name = "vatgia"
+sock_common = xmlrpclib.ServerProxy(url_common)
+uid = sock_common.login(db_name, user_name, password)
+print uid
+sock = xmlrpclib.ServerProxy(url_object)
+filter = [('name', 'like' , '%Zenfone 5%'),('code','=', '70043393'), ('categ_id','=',1 )]
+#prods = sock.execute(db_name,uid,password,'ftg.public.api','get_products',filter ) 
+filter = [()]
+prods = sock.execute(dbname,uid,pwd,'ftg.public.api','get_products',filter ) 
+print prods
+prod_codes = ['7001234','70059933']
+warehouses = ['CDT_HCM','CDT_HN','CDT_MT']
+prods = sock.execute(db_name,uid,password,'ftg.public.api','get_product_stock',prod_codes, warehouses)

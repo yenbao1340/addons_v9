@@ -2,9 +2,10 @@
 <openerp>
     <data>
         <!-- Quản lý hợp đồng-->
+
         <record id="view_apartment_contract" model="ir.ui.view">
             <field name="name">Quản lý hợp đồng</field>
-            <field name="model">quan.ly.chung.cu.hop.dong</field>
+            <field name="model">apartment.contract</field>
             <field name="arch" type="xml">
                 <form string="Vehicle">
                     <header>
@@ -15,11 +16,15 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="partner_id" domain="[('customer', '=', True)]"/>
-                                <field name="down_payment" />
+                                <field name="name"/>
+                                <field name="supplier_id" domain="[('customer', '=', True)]"/>
+                                <!--<field name="price"/>-->
+                                <field name="deposit" />
                                 <field name="power_start"/>
                             </group>
                             <group>
+                                <!--<field name="room_id"/>-->
+                                <field name="date_created"/>
                                 <field name="date_start" />
                                 <field name="date_end" />
                                 <field name="water_start"/>
@@ -27,20 +32,20 @@
                         </group>
                         <notebook position="inside">
                             <page string="Phòng cho thuê">
-                                <field name="product_room">
-                                    <tree>
+                                <field name="room_product_id">
+                                    <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
-                                        <field name="room_product" widget="selection"/>
+                                        <field name="room_product"/>
                                         <field name="room_price"/>
                                     </tree>
                                 </field>
                             </page>
                             <page string="Dịch vụ cơ bản">
-                                <field name="product_base_service">
-                                    <tree>
+                                <field name="base_service_product_id">
+                                    <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
-                                        <field name="product_base_service" widget="selection"/>
-                                        <field name="product_base_service_price"/>
+                                        <field name="service_product"/>
+                                        <field name="service_price"/>
                                     </tree>
                                 </field>
                             </page>
@@ -48,17 +53,7 @@
                                 <field name="sale_id"/>
                             </page>
                             <page string="Tenant" attrs="{'invisible': [('state', '=', 'draft')]}">
-                                <field name="tenant_ids">
-                                    <tree string="Quản lý tenant" editable="bottom">
-                                        <field name="partner_id"/>
-                                        <field name="gui_xe"/>
-                                        <field name="type" attrs="{'readonly': [('gui_xe', '=', False)]}"/>
-                                        <field name="color" attrs="{'readonly': [('gui_xe', '=', False)]}"/>
-                                        <field name="number" attrs="{'readonly': [('gui_xe', '=', False)]}"/>
-                                        <field name="date_start" readonly="1"/>
-                                        <field name="date_end" readonly="1"/>
-                                    </tree>
-                                </field>
+                                <field name="tenent_id"/>
                             </page>
                         </notebook>
                     </sheet>
@@ -72,11 +67,12 @@
 
         <record model="ir.ui.view" id="view_apartment_contract_tree">
             <field name="name">apartment.contract.tree</field>
-            <field name="model">quan.ly.chung.cu.hop.dong</field>
+            <field name="model">apartment.contract</field>
             <field name="arch" type="xml">
                 <tree string="Quản lý hợp đồng">
                     <field name="name"/>
-                    <field name="partner_id"/>
+                    <!--<field name="room_id"/>-->
+                    <!--<field name="price"/>-->
                     <field name="date_start" />
                     <field name="date_end" />
                     <field name="state"/>
@@ -86,17 +82,17 @@
 
         <record model="ir.actions.act_window" id="action_apartment_contract_form">
             <field name="name">Quản lý hợp đồng</field>
-            <field name="res_model">quan.ly.chung.cu.hop.dong</field>
+            <field name="res_model">apartment.contract</field>
             <field name="view_type">form</field>
             <field name="view_mode">list,form</field>
-            <field name="view_id" ref="view_apartment_contract_tree" />
+            <field name="view_id" ref="view_apartment_room_tree" />
         </record>
 
 
         <menuitem id="menu_apartment_contract"
                   name="Quản lý hợp đồng"
                   sequence="1"
-                  parent="odoo_chung_cu.menu_chungcu_conf"
+                  parent="menu_chungcu_conf"
                   action="action_apartment_contract_form"
                 />
     </data>
