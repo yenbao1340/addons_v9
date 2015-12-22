@@ -63,7 +63,14 @@ class ql_chung_cu_dien_nuoc(models.Model):
     _defaults = {
         'is_paid': False,
     }
-
+    def on_change_date(self,cr,uid,ids,date,context=None):
+        pre_month_id = self.search(cr,uid,[],order='date desc', limit=1)
+        print date
+        pre_month=self.browse(cr,uid,pre_month_id)
+        res={'value':{}}
+        res['value']={'old_water':pre_month.water_number,'old_power':pre_month.power_number}
+        return res
+    
     @api.one
     def not_paid(self):
         self.write({

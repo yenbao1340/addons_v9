@@ -163,10 +163,10 @@
                             <label for="name" class="oe_edit_only"/>
                             <group>
                                 <group>
-                                    <field name="date"/>
+                                    <field name="date" on_change="on_change_date(date)"/>
                                 </group>
                                 <group>
-                                    <field name="room_id" widget="selection"/>
+                                    <field name="room_id" widget="selection" on_change="on_change_date(date)"/>
                                 </group>
                             </group>
                         </div>
