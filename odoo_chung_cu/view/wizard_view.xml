@@ -14,13 +14,13 @@
                      <group>
                         <field name="room_id"/>
                         <field name="supplier_id"/>
-                        <!--field name="month"/-->
+                        <field name="month"/>
                         <field name="is_load" invisible="1"/>
                         <field name="is_sale" invisible="1"/>
                      </group>
                     <notebook position="inside">
                         <page string="Điện nước">
-                               <!--field name="month_line">
+                               <field name="month_line">
                                    <tree>
                                         <field name="date"/>
                                         <field name="old_power"/>
@@ -30,17 +30,17 @@
                                         <field name="power_price"/>
                                         <field name="water_price"/>
                                    </tree>
-                               </field-->
+                               </field>
                         </page>
                         <page string="Dịch vụ">
-                               <!-- field name="service_line">
+                               <field name="service_line">
                                    <tree>
                                     <field name="date"/>
                                     <field name="service_type"/>
                                     <field name="price"/>
                                     <field name="description"/>
                                    </tree>
-                               </field-->
+                               </field>
                         </page>
                     </notebook>
 
@@ -69,15 +69,6 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
-        <!-- record model="ir.ui.view" id="view_paid">
-            <field name="name">apartment.contract.paid</field>
-            <field name="model">apartment.contract</field>
-            <field name="inherit_id" ref="view_apartment_contract" />
-            <field name="arch" type="xml">
-                <xpath expr="//button[@name='action_confirm']" position="before">
-                    <button name="create_field" string="Thanh toán" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'confirm')]}" />
-                </xpath>
-            </field>
-        </record-->
+        
     </data>
 </openerp>

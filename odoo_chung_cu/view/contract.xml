@@ -10,6 +10,7 @@
                 <form string="Vehicle">
                     <header>
                         <button name="action_confirm" states="draft" type="object" string="Xác nhận" class="oe_highlight"/>
+                        <!-- button name="create_field" string="Thanh toán" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'confirm')]}" /-->
                         <button name="action_cancel" string="Hủy" type="object" states="confirm"/>
                         <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,cancel"/>
                     </header>
@@ -35,7 +36,6 @@
                                 <field name="room_product_id">
                                     <tree editable="bottom">
                                         <field name="sequence" widget="handle"/>
-                                        <field name="room_product"/>
                                         <field name="room_price"/>
                                     </tree>
                                 </field>

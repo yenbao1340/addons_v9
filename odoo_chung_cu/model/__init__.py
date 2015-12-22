@@ -1,6 +1,6 @@
-import models
-import tenant
-import contract
-import contract_line
-import product
-import paid_contract
+from . import models
+from . import tenant
+from . import contract
+from . import contract_line
+from . import product
+from . import paid_contract
