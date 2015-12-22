@@ -206,11 +206,7 @@
             <field name="view_id" ref="view_apartment_month_tree" />
         </record>
 
-        <menuitem id="menu_apartment_month_index"
-                  name="Nhập chỉ số điện nước"
-                  parent="menu_chungcu_conf"
-                  action="action_apartment_month_index_form"
-                />
+       
         <!-- Khach hang-->
         <record model="ir.actions.act_window" id="action_partner">
             <field name="name">Khách hàng</field>
@@ -368,13 +364,14 @@
             <field name="view_id" ref="view_apartment_service_tree" />
         </record>
 
-        <menuitem id="menu_apartment_service"
-                  name="Dịch vụ"
+        <menuitem id="menu_apartment_services"
+                  name="Dịch Vụ"
                   parent="menu_chungcu_conf"
                   action="action_apartment_service_form"
                 />
-        <menuitem id="menu_apartment_service_ds"
+        <menuitem id="menu_apartment_danhsachdichvu"
                   name="Danh Sách Dịch vụ"
+                  sequence="2"
                   parent="menu_chungcu_conf_etc"                
                 />
     </data>
