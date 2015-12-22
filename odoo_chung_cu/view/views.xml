@@ -38,11 +38,7 @@
         </record>
 
 
-        <menuitem id="menu_apartment_building"
-                  name="Quản lý tòa nhà"
-                  parent="menu_chungcu_conf"
-                  action="action_apartment_building_form"
-                />
+      
         <!-- Quản lý căn hộ-->
         <record id="view_apartment_room" model="ir.ui.view">
             <field name="name">Quản lý Căn hộ</field>
@@ -88,7 +84,7 @@
         <menuitem id="menu_apartment_room"
                   sequence="2"
                   name="Quản lý căn hộ"
-                  parent="menu_chungcu_conf"
+                  parent="menu_chungcu_conf_etc"
                   action="action_apartment_room_form"
                 />
         <!-- Tháng-->
@@ -140,11 +136,7 @@
             <field name="view_id" ref="view_apartment_month_tree" />
         </record>
 
-        <menuitem id="menu_apartment_month"
-                  name="Tháng hóa đơn"
-                  parent="menu_chungcu_conf_etc"
-                  action="action_apartment_month_form"
-                />
+    
 
         <!-- Điện nước hàng tháng-->
         <record id="view_apartment_month_index" model="ir.ui.view">
@@ -216,7 +208,7 @@
 
         <menuitem id="menu_apartment_month_index"
                   name="Nhập chỉ số điện nước"
-                  parent="menu_chungcu_operation"
+                  parent="menu_chungcu_conf"
                   action="action_apartment_month_index_form"
                 />
         <!-- Khach hang-->
@@ -277,11 +269,7 @@
             <field name="view_id" ref="view_apartment_price_tree" />
         </record>
 
-        <menuitem id="menu_apartment_price"
-                  name="Đơn giá điện nước"
-                  parent="menu_chungcu_conf_etc"
-                  action="action_apartment_price_form"
-                />
+      
         <!-- Các loại dịch vụ-->
         <record id="view_apartment_service_conf" model="ir.ui.view">
             <field name="name">Loại dịch vụ</field>
@@ -321,11 +309,7 @@
             <field name="view_id" ref="view_apartment_service_conf_tree" />
         </record>
 
-        <menuitem id="menu_apartment_service_conf"
-                  name="Loại dịch vụ"
-                  parent="menu_chungcu_conf_etc"
-                  action="action_apartment_service_conf_form"
-                />
+      
         <!-- Nhập dịch vụ cho phòng-->
         <record id="view_apartment_service" model="ir.ui.view">
             <field name="name">Dịch vụ khác</field>
@@ -386,8 +370,12 @@
 
         <menuitem id="menu_apartment_service"
                   name="Dịch vụ"
-                  parent="menu_chungcu_operation"
+                  parent="menu_chungcu_conf"
                   action="action_apartment_service_form"
+                />
+        <menuitem id="menu_apartment_service_ds"
+                  name="Danh Sách Dịch vụ"
+                  parent="menu_chungcu_conf_etc"                
                 />
     </data>
 </openerp>

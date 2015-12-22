@@ -55,5 +55,11 @@
             <field name="view_mode">list,form</field>
             <field name="view_id" ref="view_paid_month_index_tree" />
         </record>
+        
+        <menuitem id="menu_apartment_service"
+                  name="Chỉ Số Điện Nước"
+                  parent="menu_chungcu_conf"
+                  action="action_paid_month_index_form"
+                />
     </data>
 </openerp>

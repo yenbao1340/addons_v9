@@ -10,11 +10,11 @@
                   parent="menu_chungcu_root"
                 />
         <menuitem id="menu_chungcu_conf"
-                  name="Cấu hình"
+                  name="Dịch Vụ"
                   parent="menu_chungcu_root"
                 />
         <menuitem id="menu_chungcu_conf_etc"
-                  name="Cấu hình khác"
+                  name="Cấu Hình"
                   parent="menu_chungcu_root"
                 />
     </data>
