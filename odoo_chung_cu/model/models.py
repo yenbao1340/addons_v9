@@ -165,9 +165,9 @@ class apartment_service(models.Model):
     name = fields.Char(compute='_get_name')
     room_id = fields.Many2one('apartment.room', "Phòng", required=True)
     date = fields.Date('Ngày ghi dịch vụ', required=True)
-    service_type = fields.Many2one('apartment.service.conf', 'Loại dịch vụ', required=True)
+    service_type = fields.Many2one('product.product', 'Dịch vụ', required=True)
     price = fields.Float('Tổng tiền')
-    description = fields.Char('Ghi chú')
+    description = fields.Text('Ghi chú')
     is_paid = fields.Boolean('Đã thanh toán')
     state = fields.Selection([
         ('draft', 'Nháp'),
