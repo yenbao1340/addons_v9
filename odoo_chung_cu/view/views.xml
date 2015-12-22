@@ -24,7 +24,7 @@
             <field name="model">apartment.building</field>
             <field name="arch" type="xml">
                 <tree string="Quản lý tòa nhà">
-                    <field name="name" string="Tên tòa nhà"/>
+                    <field name="name" string="Tên phòng"/>
                 </tree>
             </field>
         </record>
@@ -52,7 +52,7 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="name" string="Tên phòng"/>
                                 <field name="building_id" widget="selection"/>
                             </group>
                         </group>
@@ -69,8 +69,8 @@
             <field name="name">apartment.room.tree</field>
             <field name="model">apartment.room</field>
             <field name="arch" type="xml">
-                <tree string="Quản lý căn hộ">
-                    <field name="name" string="Tên tòa nhà"/>
+                <tree string="Quản lý căn hộ"  editable="1">
+                    <field name="name" string="Tên phòng"/>
                     <field name="building_id" string="Tòa nhà"/>
                 </tree>
             </field>
