@@ -1,6 +1,16 @@
-from . import models
-from . import tenant
-from . import contract
-from . import contract_line
-from . import product
-from . import paid_contract
+import apartment_building
+import apartment_contract_base_service
+import apartment_contract_room
+import apartment_contract
+import apartment_month_index
+import apartment_month
+import apartment_price
+import apartment_room
+import apartment_service_conf
+import apartment_service
+import paid_contract_line_month
+import paid_contract_line_service
+import paid_contract
+import product
+import sale_order
+import tenant

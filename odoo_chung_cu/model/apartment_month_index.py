@@ -4,38 +4,7 @@ from openerp.exceptions import except_orm, Warning, RedirectWarning
 import time, datetime
 
 
-class ql_chung_cu_toa_nha(models.Model):
-    _name = "apartment.building"
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
 
-    name = fields.Char("Tên")
-
-
-class ql_chung_cu_phong(models.Model):
-    _name = "apartment.room"
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
-
-    name = fields.Char("Tên tòa nhà")
-    building_id = fields.Many2one('apartment.building', 'Tòa nhà')
-
-
-class ql_chung_cu_month(models.Model):
-    _name = "apartment.month"
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
-
-    name = fields.Char('Tháng', requieqred=True)
-    year = fields.Selection([
-        ('2015', '2015'),
-        ('2016', '2016'),
-        ('2017', '2017'),
-        ('2018', '2018'),
-        ('2019', '2019'),
-        ('2020', '2020')], 'Năm', requieqred=True)
-    date_start = fields.Date('Ngày bắt đầu')
-    date_end = fields.Date('Ngày kết thúc')
-    _defaults = {
-        'year': datetime.date.today().strftime('%Y')
-    }
 
 
 class ql_chung_cu_dien_nuoc(models.Model):
@@ -44,7 +13,7 @@ class ql_chung_cu_dien_nuoc(models.Model):
     _inherit = ['mail.thread', 'ir.needaction_mixin']
 
     name = fields.Char(compute='_get_name')
-    room_id = fields.Many2one('product.product', "Phòng", required=True, states={'draft': [('readonly', False)]})
+    room_id = fields.Many2one('apartment.room', "Phòng", required=True, states={'draft': [('readonly', False)]})
     date = fields.Date('Ngày ghi chỉ số',readonly = True, required=True, states={'draft': [('readonly', False)]})
     old_water = fields.Float('Chỉ số nước cũ', states={'draft': [('readonly', False)]})
     old_power = fields.Float('Chỉ số điện cũ', states={'draft': [('readonly', False)]})
@@ -140,63 +109,3 @@ class ql_chung_cu_dien_nuoc(models.Model):
             else:
                 self.old_water = 0.0
                 self.old_power = 0.0
-
-class ApartmentPrice(models.Model):
-    _name = 'apartment.price'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
-
-    water_price = fields.Float('Giá nước/m3')
-    power_price = fields.Float('Giá điện/Kwh')
-
-
-class apartment_service_conf(models.Model):
-    _name = 'apartment.service.conf'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
-
-    name = fields.Char('Tên dịch vụ')
-
-class apartment_service(models.Model):
-    _name = 'apartment.service'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
-
-    """
-        Module cho phép người dùng nhập dịch vụ sử dụng cho tòa nhà
-    """
-    name = fields.Char(compute='_get_name')
-    room_id = fields.Many2one('apartment.room', "Phòng", required=True)
-    date = fields.Date('Ngày ghi dịch vụ', required=True)
-    service_type = fields.Many2one('apartment.service.conf', 'Loại dịch vụ', required=True)
-    price = fields.Float('Tổng tiền')
-    description = fields.Char('Ghi chú')
-    is_paid = fields.Boolean('Đã thanh toán')
-    state = fields.Selection([
-        ('draft', 'Nháp'),
-        ('confirm', 'Xác nhận'),
-        ('paid', 'Đã thanh toán'),
-        ('cancel', 'Đã hủy')], 'Trạng thái')
-    _defaults = {
-        'state': 'draft',
-        'date': time.strftime('%Y-%m-%d'),
-        'is_paid': False
-    }
-
-    @api.multi
-    def _get_name(self):
-        for record in self:
-            record.name = self.room_id.name + ' - ' + self.service_type.name
-
-    @api.one
-    def action_confirm(self):
-        self.state = 'confirm'
-
-    @api.one
-    def action_cancel(self):
-        self.state = 'cancel'
-
-
-class SaleOrder(models.Model):
-    _name = 'sale.order'
-    _inherit = 'sale.order'
-
-    contract_id = fields.Many2one('apartment.contract')
-

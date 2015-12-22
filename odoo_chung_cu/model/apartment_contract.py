@@ -3,6 +3,9 @@ from openerp import models, fields, api
 from openerp.exceptions import except_orm, Warning, RedirectWarning
 import time, datetime
 
+
+
+
 class ql_chung_cu_hop_dong(models.Model):
     _name = "apartment.contract"
     _inherit = ['mail.thread', 'ir.needaction_mixin']
@@ -30,6 +33,19 @@ class ql_chung_cu_hop_dong(models.Model):
         'date_created': time.strftime('%Y-%m-%d'),
         'date_start': time.strftime('%Y-%m-%d'),
     }
+    
+    @api.model
+    def create(self, vals):
+        print str(vals)
+        cxt = self.env.context
+        id = super(ql_chung_cu_hop_dong, self).create(vals)
+        xx = 'CONTRACT-'
+        xx += str(id)
+        vals.update({'name':"id-MM-YY"
+})
+        
+        
+        return id
 
     @api.one
     def write(self, vals):
@@ -200,3 +216,6 @@ class ql_chung_cu_hop_dong(models.Model):
             if contract_list.date_end == date_now:
                 if contract.room_product_id:
                     contract.room_product_id.room_product.check_avalible = False
+
+
+
