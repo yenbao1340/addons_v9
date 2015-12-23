@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_apartment_room" model="ir.ui.view">
+			<field name="name">Quản lý Căn hộ</field>
+			<field name="model">apartment.room</field>
+			<field name="arch" type="xml">
+				<form string="Quản lý căn hộ">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" string="Tên phòng" />
+								<field name="building_id" widget="selection" />
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_apartment_room_tree">
+			<field name="name">apartment.room.tree</field>
+			<field name="model">apartment.room</field>
+			<field name="arch" type="xml">
+				<tree string="Quản lý căn hộ" editable="1">
+					<field name="name" string="Tên phòng" />
+					<field name="building_id" string="Tòa nhà" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_apartment_room_form">
+			<field name="name">Quản lý căn hộ</field>
+			<field name="res_model">apartment.room</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">list,form</field>
+			<field name="view_id" ref="view_apartment_room_tree" />
+		</record>
+
+
+
+
+	</data>
+</openerp>

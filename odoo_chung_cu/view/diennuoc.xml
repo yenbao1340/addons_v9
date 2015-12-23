@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_apartment_month_index" model="ir.ui.view">
+			<field name="name">Nhập chỉ số điện nước</field>
+			<field name="model">apartment.month.index</field>
+			<field name="arch" type="xml">
+				<form string="Chỉ số điện nước">
+					<header>
+						<button name="action_confirm" states="draft" type="object"
+							string="Xác nhận" class="oe_highlight" />
+						<button name="action_cancel" string="Hủy" type="object"
+							states="confirm" />
+						<button name="not_paid" string="Không thanh toán" type="object"
+							states="confirm" />
+						<field name="state" widget="statusbar"
+							statusbar_visible="draft,confirm,paid,not_paid,cancel" />
+					</header>
+					<sheet>
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only" />
+							<group>
+								<group>
+									<field name="date" />
+								</group>
+								<group>
+									<field name="room_id" widget="selection" />
+								</group>
+							</group>
+						</div>
+						<group col="4" string="General Properties">
+							<group>
+								<field name="old_power" />
+								<field name="old_water" />
+							</group>
+							<group>
+								<field name="power_number" />
+								<field name="water_number" />
+							</group>
+							<field name="power_price" invisible="1" />
+							<field name="water_price" invisible="1" />
+
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_apartment_month_index_tree">
+			<field name="name">apartment.month.tree</field>
+			<field name="model">apartment.month.index</field>
+			<field name="arch" type="xml">
+				<tree string="Chỉ số điện nước" colors="grey:state=='cancel';blue:state in ('draft')">
+					<field name="room_id" />
+					<field name="date" />
+					<field name="power_number" />
+					<field name="water_number" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_apartment_month_index_form">
+			<field name="name">Nhập chỉ số điện nước</field>
+			<field name="res_model">apartment.month.index</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">list,form</field>
+			<field name="view_id" ref="view_apartment_month_tree" />
+		</record>
+
+		<!-- giá điện nước -->
+
+		<record id="view_apartment_price" model="ir.ui.view">
+			<field name="name">Đơn giá điện nước</field>
+			<field name="model">apartment.price</field>
+			<field name="arch" type="xml">
+				<form string="Đơn giá điện nước">
+					<sheet>
+						<group>
+							<group>
+								<field name="power_price" />
+								<field name="water_price" />
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_apartment_price_tree">
+			<field name="name">apartment.price.tree</field>
+			<field name="model">apartment.price</field>
+			<field name="arch" type="xml">
+				<tree string="Đơn giá điện nước">
+					<field name="power_price" />
+					<field name="water_price" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_apartment_price_form">
+			<field name="name">Đơn giá điện nước</field>
+			<field name="res_model">apartment.price</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">list,form</field>
+			<field name="view_id" ref="view_apartment_price_tree" />
+		</record>
+
+
+
+	</data>
+</openerp>
+       

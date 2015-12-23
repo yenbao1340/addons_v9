@@ -1,99 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
-        <!-- Quản lý hợp đồng-->
+	<data>
+		<!-- Quản lý hợp đồng -->
 
-        <record id="view_apartment_contract" model="ir.ui.view">
-            <field name="name">Quản lý hợp đồng</field>
-            <field name="model">apartment.contract</field>
-            <field name="arch" type="xml">
-                <form string="Vehicle">
-                    <header>
-                        <button name="action_confirm" states="draft" type="object" string="Xác nhận" class="oe_highlight"/>
-                        <!-- button name="create_field" string="Thanh toán" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'confirm')]}" /-->
-                        <button name="action_cancel" string="Hủy" type="object" states="confirm"/>
-                        <field name="state"  widget="statusbar" statusbar_visible="draft,confirm,cancel"/>
-                    </header>
-                    <sheet>
-                        <group>
-                            <group>
-                                <field name="name"/>
-                                <field name="supplier_id" domain="[('customer', '=', True)]"/>
-                                <!--<field name="price"/>-->
-                                <field name="deposit" />
-                                <field name="power_start"/>
-                            </group>
-                            <group>
-                                <!--<field name="room_id"/>-->
-                                <field name="date_created"/>
-                                <field name="date_start" />
-                                <field name="date_end" />
-                                <field name="water_start"/>
-                            </group>
-                        </group>
-                        <notebook position="inside">
-                            <page string="Phòng cho thuê">
-                                <field name="room_product_id">
-                                    <tree editable="bottom">
-                                        <field name="sequence" widget="handle"/>
-                                        <field name="room_price"/>
-                                    </tree>
-                                </field>
-                            </page>
-                            <page string="Dịch vụ cơ bản">
-                                <field name="base_service_product_id">
-                                    <tree editable="bottom">
-                                        <field name="sequence" widget="handle"/>
-                                        <field name="service_product"/>
-                                        <field name="service_price"/>
-                                    </tree>
-                                </field>
-                            </page>
-                            <page string="Sale Order" attrs="{'invisible': [('state', '=', 'draft')]}">
-                                <field name="sale_id"/>
-                            </page>
-                            <page string="Tenant" attrs="{'invisible': [('state', '=', 'draft')]}">
-                                <field name="tenent_id"/>
-                            </page>
-                        </notebook>
-                    </sheet>
-                    <div class="oe_chatter">
-                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
-                        <field name="message_ids" widget="mail_thread"/>
-                    </div>
-                </form>
-            </field>
-        </record>
+		<record id="view_apartment_contract" model="ir.ui.view">
+			<field name="name">Quản lý hợp đồng</field>
+			<field name="model">apartment.contract</field>
+			<field name="arch" type="xml">
+				<form string="Vehicle">
+					<header>
+						<button name="action_confirm" states="draft" type="object"
+							string="Xác nhận" class="oe_highlight" />
+						<!-- button name="create_field" string="Thanh toán" type="object" class="oe_highlight" 
+							attrs="{'invisible': [('state', '!=', 'confirm')]}" / -->
+						<button name="action_cancel" string="Hủy" type="object"
+							states="confirm" />
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,cancel" />
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="supplier_id" domain="[('customer', '=', True)]" />
+								<!--<field name="price"/> -->
+								<field name="deposit" />
+								<field name="power_start" />
+							</group>
+							<group>
+								<!--<field name="room_id"/> -->
+								<field name="date_created" />
+								<field name="date_start" />
+								<field name="date_end" />
+								<field name="water_start" />
+							</group>
+						</group>
+						<notebook position="inside">
+							<page string="Phòng cho thuê">
+								<field name="room_product_id">
+									<tree editable="bottom">
+										<field name="sequence" widget="handle" />
+										<field name="room_price" />
+									</tree>
+								</field>
+							</page>
+							<page string="Dịch vụ cơ bản">
+								<field name="base_service_product_id">
+									<tree editable="bottom">
+										<field name="sequence" widget="handle" />
+										<field name="service_product" />
+										<field name="service_price" />
+									</tree>
+								</field>
+							</page>
+							<page string="Sale Order" attrs="{'invisible': [('state', '=', 'draft')]}">
+								<field name="sale_id" />
+							</page>
+							<page string="Tenant" attrs="{'invisible': [('state', '=', 'draft')]}">
+								<field name="tenent_id" />
+							</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
 
-        <record model="ir.ui.view" id="view_apartment_contract_tree">
-            <field name="name">apartment.contract.tree</field>
-            <field name="model">apartment.contract</field>
-            <field name="arch" type="xml">
-                <tree string="Quản lý hợp đồng">
-                    <field name="name"/>
-                    <!--<field name="room_id"/>-->
-                    <!--<field name="price"/>-->
-                    <field name="date_start" />
-                    <field name="date_end" />
-                    <field name="state"/>
-                </tree>
-            </field>
-        </record>
+		<record model="ir.ui.view" id="view_apartment_contract_tree">
+			<field name="name">apartment.contract.tree</field>
+			<field name="model">apartment.contract</field>
+			<field name="arch" type="xml">
+				<tree string="Quản lý hợp đồng">
+					<field name="name" />
+					<!--<field name="room_id"/> -->
+					<!--<field name="price"/> -->
+					<field name="date_start" />
+					<field name="date_end" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
 
-        <record model="ir.actions.act_window" id="action_apartment_contract_form">
-            <field name="name">Quản lý hợp đồng</field>
-            <field name="res_model">apartment.contract</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">list,form</field>
-            <field name="view_id" ref="view_apartment_room_tree" />
-        </record>
+		<record model="ir.actions.act_window" id="action_apartment_contract_form">
+			<field name="name">Quản lý hợp đồng</field>
+			<field name="res_model">apartment.contract</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">list,form</field>
+			<field name="view_id" ref="view_apartment_room_tree" />
+		</record>
 
 
-        <menuitem id="menu_apartment_contract"
-                  name="Quản lý hợp đồng"
-                  sequence="1"
-                  parent="menu_chungcu_conf"
-                  action="action_apartment_contract_form"
-                />
-    </data>
+
+	</data>
 </openerp>

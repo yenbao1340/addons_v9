@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+		<record id="view_apartment_month" model="ir.ui.view">
+			<field name="name">Tháng hóa đơn</field>
+			<field name="model">apartment.month</field>
+			<field name="arch" type="xml">
+				<form string="Tháng hóa đơn">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="year" widget="selection" />
+								<label for="date_start" string="Duration" />
+								<div>
+									<field name="date_start" class="oe_inline" nolabel="1" />
+									-
+									<field name="date_end" nolabel="1" class="oe_inline" />
+								</div>
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids" widget="mail_followers"
+							groups="base.group_user" />
+						<field name="message_ids" widget="mail_thread" />
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_apartment_month_tree">
+			<field name="name">apartment.month.tree</field>
+			<field name="model">apartment.month</field>
+			<field name="arch" type="xml">
+				<tree string="Tháng hóa đơn">
+					<field name="name" />
+					<field name="year" />
+					<field name="date_start" />
+					<field name="date_end" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_apartment_month_form">
+			<field name="name">Tháng hóa đơn</field>
+			<field name="res_model">apartment.month</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">list,form</field>
+			<field name="view_id" ref="view_apartment_month_tree" />
+		</record>
+
+
+
+	</data>
+</openerp>
