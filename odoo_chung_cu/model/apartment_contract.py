@@ -35,17 +35,19 @@ class ql_chung_cu_hop_dong(models.Model):
     }
     
     @api.model
-    def create(self, vals):
-        print str(vals)
+    def create(self,vals):
+        now = datetime.datetime.now()
         cxt = self.env.context
-        id = super(ql_chung_cu_hop_dong, self).create(vals)
+        id=super(ql_chung_cu_hop_dong, self).create(vals)
         xx = 'CONTRACT-'
-        xx += str(id)
-        vals.update({'name':"id-MM-YY"
-})
-        
-        
-        return id
+        xx += str(id.id)
+        xx += str(now.month)
+        xx += str((now.year)%1000%100)
+        id.update({'name':xx})
+    
+
+        return  id
+    
 
     @api.one
     def write(self, vals):
