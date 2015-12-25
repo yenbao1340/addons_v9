@@ -19,14 +19,9 @@ class ql_chung_cu_dien_nuoc(models.Model):
     old_power = fields.Float('Chỉ số điện cũ', states={'draft': [('readonly', False)]})
     water_number = fields.Float("Chỉ số nước mới", required=True, states={'draft': [('readonly', False)]})
     power_number = fields.Float("Chỉ số điện mới", required=True, states={'draft': [('readonly', False)]})
-    power_price = fields.Float("Giá điện", states={'draft': [('readonly', False)]})
-    water_price = fields.Float("Giá nước", states={'draft': [('readonly', False)]})
-    is_paid = fields.Boolean('Đã thanh toán')
     state = fields.Selection([
         ('draft', 'Nháp'),
         ('confirm', 'Xác nhận'),
-        ('paid', 'Đã thanh toán'),
-        ('not_paid', 'Không thanh toán'),
         ('cancel', 'Đã hủy')], 'Trạng thái')
     _defaults = {
         'is_paid': False,
