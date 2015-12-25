@@ -12,7 +12,7 @@ class ql_chung_cu_hop_dong(models.Model):
 
     name = fields.Char('Số hợp đồng', required=True)
     tenent_id = fields.One2many('apartment.tenant', 'contract_id',readonly = True, states={'confirm': [('readonly', False)]})
-    # room_id = fields.Many2one('apartment.room', "Phòng", required=True, states={'confirm': [('readonly', True)]})
+    room_id = fields.Many2one('apartment.room', "Phòng", required=True, states={'confirm': [('readonly', True)]})
     price = fields.Float('Đơn giá', states={'confirm': [('readonly', True)]})
     deposit = fields.Float('Số tiền đặt cọc')
     date_created = fields.Date('Ngày tạo hợp đồng')
@@ -217,6 +217,13 @@ class ql_chung_cu_hop_dong(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
 
+    #Ticket 51
+    def confirm_contract(self):
+        # ngay day
+         if self.state == 'confirm':
+            contract_ids = self.search(('room_product_id.room_product.id', '=', self.room_product_id.room_product.id))
+            print contract_ids
+            raise except_orm("loi","kiem tra lai")
     @api.model
     def _cron_check_avalible(self):
         date_now = time.strftime('%Y-%m-%d')

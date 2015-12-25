@@ -9,6 +9,7 @@
 			<field name="arch" type="xml">
 				<form string="Vehicle">
 					<header>
+						<button name="confirm_contract" string="Confirm"/>
 						<button name="action_confirm" states="draft" type="object"
 							string="Xác nhận" class="oe_highlight" />
 						<!-- button name="create_field" string="Thanh toán" type="object" class="oe_highlight" 
