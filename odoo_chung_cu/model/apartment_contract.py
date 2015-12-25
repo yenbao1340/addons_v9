@@ -12,7 +12,7 @@ class ql_chung_cu_hop_dong(models.Model):
 
     name = fields.Char('Số hợp đồng', required=True)
     tenent_id = fields.One2many('apartment.tenant', 'contract_id',readonly = True, states={'confirm': [('readonly', False)]})
-    # room_id = fields.Many2one('apartment.room', "Phòng", required=True, states={'confirm': [('readonly', True)]})
+    #room_id = fields.Many2one('apartment.room', "Phòng", required=True, states={'confirm': [('readonly', True)]})
     price = fields.Float('Đơn giá', states={'confirm': [('readonly', True)]})
     deposit = fields.Float('Số tiền đặt cọc')
     date_created = fields.Date('Ngày tạo hợp đồng')
