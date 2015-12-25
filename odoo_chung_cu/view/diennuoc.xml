@@ -65,6 +65,25 @@
 			</field>
 		</record>
 
+		<record id="apartment_month_index_search_view" model="ir.ui.view">
+            <field name="name">apartment.month.index.search</field>
+            <field name="model">apartment.month.index</field>
+            <field name="arch" type="xml">
+                <search string="Search"> 
+                    <field name="state" string="State"/>                   
+                	<field name="room_id" string="Room ID"/>                
+	                <separator/>	             
+	               	<separator orientation="vertical" />	
+	           		<filter string="State Draft" name="state_draft" domain="[('state','=','comfirm')]"/>     
+	                <filter string="State Comfirm" name="room_comfirm" domain="[('state','=','draft')]"/>                
+	                <group expand="1" string="Group By"> 	              	 	      
+	                    <filter string="State" domain="[]" context="{'group_by':'state'}"/>          
+	              		<filter string="Room" domain="[]" context="{'group_by':'room_id'}"/>       
+	                </group>
+  				 </search>
+            </field>
+        </record>
+        
 		<record model="ir.actions.act_window" id="action_apartment_month_index_form">
 			<field name="name">Nhập chỉ số điện nước</field>
 			<field name="res_model">apartment.month.index</field>
@@ -108,6 +127,7 @@
 			</field>
 		</record>
 
+		
 		<record model="ir.actions.act_window" id="action_apartment_price_form">
 			<field name="name">Đơn giá điện nước</field>
 			<field name="res_model">apartment.price</field>
