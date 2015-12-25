@@ -36,7 +36,14 @@ class apartment_service(models.Model):
     def _get_name(self):
         for record in self:
             record.name = self.room_id.name + ' - ' + self.service_type.name
-
+    
+    def unlink(self, cr, uid, ids, context=None):
+        species = self.browse(cr, uid, ids)
+        if species.state == 'confirm':
+            raise except_orm('Lỗi!',
+                                 'Không thể xóa dịch vụ đã confirm')
+        rs = super(apartment_service, self).unlink(cr, uid, ids, context)
+        return rs
     @api.one
     def action_confirm(self):
         self.state = 'confirm'
