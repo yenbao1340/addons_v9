@@ -20,6 +20,7 @@ class apartment_service(models.Model):
     price = fields.Float('Tổng tiền')
     description = fields.Char('Ghi chú')
     is_paid = fields.Boolean('Đã thanh toán')
+    product_id = fields.Many2one ('product.product','Product', required=True)
     state = fields.Selection([
         ('draft', 'Nháp'),
         ('confirm', 'Xác nhận'),
