@@ -102,4 +102,14 @@ class ql_chung_cu_dien_nuoc(models.Model):
                 self.old_power = pre_month.power_number
             else:
                 self.old_water = 0.0
-                self.old_power = 0.0
+                self.old_power = 0.0                
+                
+                
+    def unlink(self, cr, uid, ids, context=None):
+        hoadon = self.browse(cr, uid, ids)
+        if hoadon.state == 'confirm':
+            raise except_orm('Lỗi!',
+                                 'Không thể xóa đã xác nhận')
+        rs = super(ql_chung_cu_dien_nuoc, self).unlink(cr, uid, ids, context)
+        return rs
+        
