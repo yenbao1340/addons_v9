@@ -3,8 +3,8 @@
 	<data>
 		<menuitem id="menu_chungcu_root" name="Quản lý chung cư"
 			sequence="10" />
-			
-			<!-- menu quản lý chung cư -->
+
+		<!-- menu quản lý chung cư -->
 		<menuitem id="menu_chungcu_operation" name="Quản lý chung cư"
 			parent="menu_chungcu_root" />
 			<menuitem id="menu_res_partner" sequence="1" name="Khách hàng"
@@ -12,41 +12,31 @@
 			<menuitem id="menu_apartment_contract" name="Quản lý hợp đồng"
 				sequence="2" parent="menu_chungcu_operation" action="action_apartment_contract_form" />
 			<menuitem id="menu_apartment_month" name="Hóa đơn thanh toán"
-				sequence="3" parent="menu_chungcu_operation" action="action_apartment_month_form"/>			
-				
-			<!-- menu DỊch vụ -->	
+				sequence="3" parent="menu_chungcu_operation" action="action_apartment_month_form" />
+
+		<!-- menu DỊch vụ -->
 		<menuitem id="menu_chungcu_conf" name="Cấu hình" parent="menu_chungcu_root" />
 			<menuitem id="menu_apartment_month_index" name="Nhập chỉ số điện nước"
 				sequence="1" parent="menu_chungcu_conf" action="action_apartment_month_index_form" />
-			<menuitem id="menu_apartment_service" name="Dịch vụ"
+			<menuitem id="menu_apartment_service" name="Dịch vụ phát sinh"
 				sequence="2" parent="menu_chungcu_conf" action="action_apartment_service_form" />
-			
-			<!-- menu cấu hình -->
+		<!-- menu cấu hình -->
 		<menuitem id="menu_chungcu_conf_etc" name="Cấu hình khác"
-			parent="menu_chungcu_root" />			
+			parent="menu_chungcu_root" />
 			<menuitem id="menu_apartment_room" sequence="1" name="Quản lý căn hộ"
 				parent="menu_chungcu_conf_etc" action="action_apartment_room_form" />
-			<menuitem id="menu_apartment_service_list" sequence="2" name="Danh sách dịch vụ"
-				parent="menu_chungcu_conf_etc"/>
-			
-			
-			
-			
-		<!--  
-		
-		<menuitem id="menu_apartment_building" name="Quản lý tòa nhà"
-			parent="menu_chungcu_conf" action="action_apartment_building_form" />
+			<menuitem id="menu_service_conf" sequence="2" name="Danh sách dịch vụ"
+				parent="menu_chungcu_conf_etc" action="action_apartment_service_conf_form" />
 
-		<menuitem id="menu_apartment_month" name="Tháng hóa đơn"
-			parent="menu_chungcu_conf_etc" action="action_apartment_month_form" />
-			
-		
-		
-		<menuitem id="menu_apartment_price" name="Đơn giá điện nước"
-			parent="menu_chungcu_conf_etc" action="action_apartment_price_form" />
-		
 
-		<menuitem id="menu_apartment_service_conf" name="Loại dịch vụ"
-			parent="menu_chungcu_conf_etc" action="action_apartment_service_conf_form" />-->
+
+
+		<!-- <menuitem id="menu_apartment_building" name="Quản lý tòa nhà" parent="menu_chungcu_conf" 
+			action="action_apartment_building_form" /> <menuitem id="menu_apartment_month" 
+			name="Tháng hóa đơn" parent="menu_chungcu_conf_etc" action="action_apartment_month_form" 
+			/> <menuitem id="menu_apartment_price" name="Đơn giá điện nước" parent="menu_chungcu_conf_etc" 
+			action="action_apartment_price_form" /> <menuitem id="menu_apartment_service_conf" 
+			name="Loại dịch vụ" parent="menu_chungcu_conf_etc" action="action_apartment_service_conf_form" 
+			/> -->
 	</data>
 </openerp>
