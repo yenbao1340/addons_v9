@@ -31,6 +31,8 @@ class apartment_service(models.Model):
         'is_paid': False
     }
 
+   
+    
     @api.multi
     def _get_name(self):
         for record in self:
@@ -43,3 +45,17 @@ class apartment_service(models.Model):
     @api.one
     def action_cancel(self):
         self.state = 'cancel'
+        
+    def ticket_44(self,cr,uid,ids,arg,name="",context=None):
+        list_id ={}
+        check=self.browse(cr, uid, ids)
+        for i in ids:
+            id=self.browse(cr,uid,i)
+            if(id.room_id == check.room_id):
+                if(id.state =='draft'):
+                    id_date = id.date.split('-')
+                    check_date = check.date.split('-')
+                    if(id_date[0] == check_date[0]):
+                        if(id_date[1] == check_date[1]):                        
+                            list_id[i]=id[0].id
+        return list_id 
