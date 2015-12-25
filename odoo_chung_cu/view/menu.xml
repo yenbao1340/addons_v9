@@ -12,7 +12,7 @@
 			<menuitem id="menu_apartment_contract" name="Quản lý hợp đồng"
 				sequence="2" parent="menu_chungcu_operation" action="action_apartment_contract_form" />
 			<menuitem id="menu_apartment_contract" name="Hóa đơn thanh toán"
-				sequence="3" parent="menu_chungcu_operation" action="action_invoice_tree1"/>			
+				sequence="3" parent="menu_chungcu_operation" action="account.action_invoice_tree1"/>			
 				
 			<!-- menu DỊch vụ -->	
 		<menuitem id="menu_chungcu_conf" name="Cấu hình" parent="menu_chungcu_root" />
