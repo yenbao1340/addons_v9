@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<record id="view_wizard_hoadon" model="ir.ui.view">
+			<field name="name">Hóa Đơn</field>
+			<field name="model">wizardhoadon</field>
+			<field name="arch" type="xml">
+				<form string="Hóa Đơn">
+					<sheet>
+						<group col="6">
+							<group colspan="3"></group>
+							<b>Ghi hóa đơn</b>
+							<group colspan="8"></group>
+							<field name="invoice_date"></field>
+						</group>
+					</sheet>
+					<footer>
+						<button name="taohoadon" string="Tạo Hóa Đơn" type="object"></button>
+						<button name="cancel" string="Cancel" type="object" class="oe_link"></button>
+					</footer>
+				</form>
+			</field>
+		</record>
+		<record id="action_wizard_hoadon" model="ir.actions.act_window">
+			<field name="name">Hóa Đơn Thanh toán</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">wizardhoadon</field>
+			<field name="view_id" ref="view_wizard_hoadon" />
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+	</data>
+</openerp>
