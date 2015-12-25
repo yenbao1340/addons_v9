@@ -12,10 +12,10 @@
         'base',
         'mail',
         'sale',
-        'product'
+        'product',
     ],
     'data': [
-        'view/menu.xml',
+        
         'view/views.xml',
         'view/wizard_view.xml',
         'view/wizard_line_view.xml',
@@ -31,6 +31,7 @@
         'data/cities.xml',
         'data/product.xml',
         #'data/cron_job.xml',
+        'view/menu.xml',
     ],
     'installable': True,
     'application': True,
