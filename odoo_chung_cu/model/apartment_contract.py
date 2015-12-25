@@ -44,8 +44,15 @@ class ql_chung_cu_hop_dong(models.Model):
         xx += str(now.month)
         xx += str((now.year)%1000%100)
         id.update({'name':xx})
-    
+        
 
+        if (id.date_end <= id.date_start):
+             raise except_orm('Lỗi!',
+                                 'Ngày kết thúc phải lớn hơn ngày bắt đầu hợp đồng ')
+        elif (id.base_service_product_id != True):
+                            raise except_orm('Lỗi!',
+                                             'Phải có ít nhất 1 base service')
+        print (id.base_service_product_id)
         return  id
     
 
