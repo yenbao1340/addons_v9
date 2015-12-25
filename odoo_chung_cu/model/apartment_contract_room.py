@@ -17,7 +17,7 @@ class ContractRoomLine(models.Model):
 
     sequence = fields.Integer('Sequence', help="Gives the sequence order when displaying a list of contract lines.")
     contract_id = fields.Many2one('apartment.contract', string='Contract', invisible=1, ondelete='cascade')
-    #room_product = fields.Many2one('product.product', string='Phòng', domain=_check, required=True)
+    room_product = fields.Many2one('product.product', string='Phòng', domain=_check, required=True)
     room_price = fields.Float(string='Đơn giá')
 
     @api.onchange('room_product')
